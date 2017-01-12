@@ -17,6 +17,12 @@ public class IPaddress {
 		System.out.println("Enter the second IP: ");
 		String secondIP = reader.readLine();
 		long j = ipToLong(secondIP);
+		
+		System.out.println("Required IP addresses:");
+		while (i < j - 1) {
+			i++;
+			System.out.println(longToIp(i));
+		}
 
 	}
 
@@ -27,6 +33,13 @@ public class IPaddress {
 				((Long.parseLong(ipSplit[1]) << 16)) +
 				((Long.parseLong(ipSplit[2]) << 8)) +
 				(Long.parseLong(ipSplit[3]));
+	}
+	
+	public static String longToIp(long longIp) {
 
+		return ((longIp >> 24) & 0xFF) + "." +
+				((longIp >> 16) & 0xFF) + "." +
+				((longIp >> 8) & 0xFF) + "." +
+				(longIp & 0xFF);
 	}
 }
